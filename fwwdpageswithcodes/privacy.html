@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Art Hive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ---------- GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAFAFA;
+      color: #212121;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #3F51B5;
+    }
+
+    .logo span {
+      color: #FF4081;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #212121;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #FF4081;
+    }
+
+    nav a.active {
+      border-bottom: 3px solid #FF4081;
+      padding-bottom: 5px;
+    }
+
+    .user-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #FF4081;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #e91e63;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(255, 64, 129, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #3F51B5;
+      color: #3F51B5;
+    }
+
+    .btn-outline:hover {
+      background: #3F51B5;
+      color: white;
+    }
+
+    /* ---------- SECTION BREAKER ---------- */
+    .breaker {
+      background: linear-gradient(135deg, #3F51B5 0%, #5C6BC0 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .breaker h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .breaker p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    /* ---------- SECTION HEADER ---------- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: #3F51B5;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #FF4081;
+      border-radius: 2px;
+    }
+
+    /* ---------- PRIVACY CONTENT ---------- */
+    .privacy-container {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .privacy-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .privacy-section h3 {
+      color: #3F51B5;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .privacy-section p {
+      color: #666;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .privacy-section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #666;
+    }
+
+    .privacy-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .privacy-section strong {
+      color: #3F51B5;
+    }
+
+    .last-updated {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+      color: #888;
+      font-style: italic;
+      text-align: right;
+    }
+
+    .highlight-box {
+      background: #f0f7ff;
+      border-left: 4px solid #3F51B5;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #212121;
+      color: #bbb;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-column h3 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: #FF4081;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-column a {
+      color: #bbb;
+      text-decoration: none;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+    }
+
+    .social-links a:hover {
+      background: #FF4081;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .privacy-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1>Art<span>Hive</span></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>     
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html" class="active">Privacy</a></li>  
+        </ul>
+      </nav>
+      <div class="user-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Join Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREAKER -->
+  <section class="breaker">
+    <div class="container">
+      <h2>Privacy Policy</h2>
+      <p>We respect your privacy and are committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information.</p>
+    </div>
+  </section>
+
+  <!-- PRIVACY CONTENT -->
+  <section class="container">
+    <div class="privacy-container">
+      <div class="highlight-box">
+        <p><strong>Our Commitment:</strong> Art Hive takes your privacy seriously. We only collect information necessary to provide and improve our services, and we never sell your personal data to third parties.</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>1. Information We Collect</h3>
+        <p>When you use Art Hive, we may collect the following types of information:</p>
+        <ul>
+          <li><strong>Personal Information:</strong> When you register, we collect your name, email address, and/or phone number.</li>
+          <li><strong>Profile Information:</strong> Artist name, biography, website links, and social media handles.</li>
+          <li><strong>Content:</strong> Artworks you upload, comments, forum posts, likes, and saved preferences.</li>
+          <li><strong>Usage Data:</strong> IP address, browser type, pages visited, time spent on site, and navigation patterns.</li>
+          <li><strong>Location Data:</strong> General location information to help you find nearby events and exhibitions.</li>
+        </ul>
+      </div>
+
+      <div class="privacy-section">
+        <h3>2. How We Use Your Information</h3>
+        <p>We use your information for the following purposes:</p>
+        <ul>
+          <li>To provide and maintain our services</li>
+          <li>To personalize your experience and recommend relevant content</li>
+          <li>To process transactions and manage your account</li>
+          <li>To communicate with you about updates, events, and promotions</li>
+          <li>To improve our website and develop new features</li>
+          <li>To protect against unauthorized access and ensure security</li>
+        </ul>
+      </div>
+
+      <div class="privacy-section">
+        <h3>3. Your Rights and Choices</h3>
+        <p>You have control over your personal data:</p>
+        <ul>
+          <li><strong>Access and Update:</strong> You can review and edit your personal information in your account settings.</li>
+          <li><strong>Communication Preferences:</strong> You can opt out of marketing emails at any time.</li>
+          <li><strong>Account Deletion:</strong> You may delete your account, which will remove your personal data from our active systems.</li>
+          <li><strong>Data Portability:</strong> You can request a copy of your data in a machine-readable format.</li>
+        </ul>
+      </div>
+
+      <div class="privacy-section">
+        <h3>4. Children's Privacy</h3>
+        <p>Art Hive is not intended for users under the age of 13. If you are between 13 and 16, you may only use our services with parental consent. If we discover that we have collected personal information from a child without appropriate consent, we will delete that information promptly [citation:1].</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>5. Data Security</h3>
+        <p>We implement industry-standard security measures to protect your information :</p>
+        <ul>
+          <li>Encryption of data in transit (SSL/TLS)</li>
+          <li>Firewalls and secure servers</li>
+          <li>Regular security assessments</li>
+          <li>Limited employee access to personal data</li>
+        </ul>
+        <p>However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security.</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>6. Cookies and Tracking Technologies</h3>
+        <p>We use cookies and similar technologies to enhance your experience:</p>
+        <ul>
+          <li><strong>Essential Cookies:</strong> Required for site functionality</li>
+          <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+          <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our site</li>
+        </ul>
+        <p>You can control cookies through your browser settings. Disabling certain cookies may affect site functionality.</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>7. Third-Party Links</h3>
+        <p>Our website may contain links to external sites. We are not responsible for the privacy practices or content of these third-party websites. We encourage you to review their privacy policies before providing any information [citation:1][citation:2].</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>8. Data Retention</h3>
+        <p>We retain your personal information for as long as your account is active or as needed to provide you services. We may also retain certain information for legitimate business purposes or to comply with legal obligations [citation:1].</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>9. International Data Transfers</h3>
+        <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data in accordance with this policy.</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>10. Changes to This Policy</h3>
+        <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting a notice on our website or sending you an email. Your continued use of Art Hive after changes constitutes acceptance of the revised policy [citation:1].</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>11. Contact Us</h3>
+        <p>If you have questions about this Privacy Policy or how we handle your data, please contact us at:</p>
+        <ul>
+          <li>Email: privacy@arthive.com</li>
+          <li>Address: Technology park malasiya</li>
+        </ul>
+      </div>
+
+      <div class="last-updated">
+        Last updated: March 5, 2026
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Art Hive</h3>
+          <p>An international art community centered at showcasing emerging talent and connecting artists worldwide.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="forum.html">Forum</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="privacy.html" class="active">Privacy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Technology park malasiya</li>
+            <li><i class="fas fa-phone"></i> 988888888</li>
+            <li><i class="fas fa-envelope"></i> info@arthive.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 Art Hive. All rights reserved. | Techspire College - Fundamental of Web Design and Development</p>
+        <p>Team: Sarita Tamang, Utsav Tamang, Samyak Ranjitkar, Starling Thapa</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

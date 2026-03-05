@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service | Art Hive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ---------- GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAFAFA;
+      color: #212121;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #3F51B5;
+    }
+
+    .logo span {
+      color: #FF4081;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #212121;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #FF4081;
+    }
+
+    nav a.active {
+      border-bottom: 3px solid #FF4081;
+      padding-bottom: 5px;
+    }
+
+    .user-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #FF4081;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #e91e63;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(255, 64, 129, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #3F51B5;
+      color: #3F51B5;
+    }
+
+    .btn-outline:hover {
+      background: #3F51B5;
+      color: white;
+    }
+
+    /* ---------- SECTION BREAKER ---------- */
+    .breaker {
+      background: linear-gradient(135deg, #3F51B5 0%, #5C6BC0 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .breaker h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .breaker p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    /* ---------- SECTION HEADER ---------- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: #3F51B5;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #FF4081;
+      border-radius: 2px;
+    }
+
+    /* ---------- TERMS CONTENT ---------- */
+    .terms-container {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .terms-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .terms-section h3 {
+      color: #3F51B5;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .terms-section p {
+      color: #666;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .terms-section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #666;
+    }
+
+    .terms-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+      color: #888;
+      font-style: italic;
+      text-align: right;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #212121;
+      color: #bbb;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-column h3 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: #FF4081;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-column a {
+      color: #bbb;
+      text-decoration: none;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+    }
+
+    .social-links a:hover {
+      background: #FF4081;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .terms-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1>Art<span>Hive</span></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="terms.html" class="active">Terms</a></li>
+         <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+      <div class="user-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Join Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREAKER -->
+  <section class="breaker">
+    <div class="container">
+      <h2>Terms of Service</h2>
+      <p>Please read these terms carefully before using Art Hive. By accessing or using our platform, you agree to be bound by these terms.</p>
+    </div>
+  </section>
+
+  <!-- TERMS CONTENT -->
+  <section class="container">
+    <div class="terms-container">
+      <div class="terms-section">
+        <h3>1. Acceptance of Terms</h3>
+        <p>Welcome to Art Hive. By accessing or using our website, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>2. User Accounts</h3>
+        <p>To access certain features, you may need to create an account. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must be at least 13 years old to use Art Hive. If you are under 18, you may use the platform only with the involvement of a parent or guardian.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>3. Content Ownership and License</h3>
+        <p>You retain all rights to the artwork and content you upload. By posting content, you grant Art Hive a non-exclusive, royalty-free, worldwide license to display, distribute, and promote your work on our platform and in promotional materials. You represent that you own or have the necessary rights to all content you submit.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>4. Prohibited Conduct</h3>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Upload infringing, obscene, or illegal content.</li>
+          <li>Harass, abuse, or harm other users.</li>
+          <li>Impersonate any person or entity.</li>
+          <li>Use the platform for unauthorized commercial purposes.</li>
+          <li>Attempt to gain unauthorized access to our systems.</li>
+        </ul>
+      </div>
+
+      <div class="terms-section">
+        <h3>5. Sales and Commissions</h3>
+        <p>Art Hive charges a 5% commission on all sales made through the platform. Artists are responsible for setting their own prices, fulfilling orders, and handling customer service. We reserve the right to remove listings that violate our policies.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>6. Intellectual Property</h3>
+        <p>The Art Hive name, logo, and all related designs are trademarks of Art Hive. You may not use these without our prior written permission. All content not uploaded by users is owned by Art Hive or its licensors.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>7. Termination</h3>
+        <p>We may suspend or terminate your account at any time for violations of these terms, without notice. You may delete your account at any time through your settings.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>8. Disclaimer of Warranties</h3>
+        <p>Art Hive is provided "as is" without warranties of any kind. We do not guarantee that the platform will be error‑free or uninterrupted.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>9. Limitation of Liability</h3>
+        <p>To the maximum extent permitted by law, Art Hive shall not be liable for any indirect, incidental, or consequential damages arising from your use of the platform.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>10. Changes to Terms</h3>
+        <p>We may update these terms from time to time. Continued use of the platform after changes constitutes acceptance of the revised terms.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3>11. Governing Law</h3>
+        <p>These terms shall be governed by the laws of [Your Country/State], without regard to its conflict of laws provisions.</p>
+      </div>
+
+      <div class="last-updated">
+        Last updated: March 5, 2026
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Art Hive</h3>
+          <p>An international art community centered at showcasing emerging talent and connecting artists worldwide.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="forum.html">Forum</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms.html" class="active">Terms</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Technology park malasiya</li>
+            <li><i class="fas fa-phone"></i> 988888888</li>
+            <li><i class="fas fa-envelope"></i> info@arthive.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 Art Hive. All rights reserved. | Techspire College - Fundamental of Web Design and Development</p>
+        <p>Team: Sarita Tamang, Utsav Tamang, Samyak Ranjitkar, Starling Thapa</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

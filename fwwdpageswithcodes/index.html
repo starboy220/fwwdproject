@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Hive – Home</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="javascripts/home.js" defer></script>
+  <style>
+    /* ---------- GLOBAL STYLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAFAFA;
+      color: #212121;
+      line-height: 1.6;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* ---------- HEADER ---------- */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #3F51B5;
+    }
+    .logo span {
+      color: #FF4081;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #212121;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active {
+      color: #FF4081;
+    }
+    nav a.active {
+      border-bottom: 3px solid #FF4081;
+      padding-bottom: 5px;
+    }
+    .user-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #FF4081;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #e91e63;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(255,64,129,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #3F51B5;
+      color: #3F51B5;
+    }
+    .btn-outline:hover {
+      background: #3F51B5;
+      color: white;
+    }
+    /* ---------- SECTION BREAKER ---------- */
+    .breaker {
+      background: linear-gradient(135deg, #3F51B5 0%, #5C6BC0 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .breaker h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .breaker p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+    /* ---------- SECTION HEADER ---------- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-header h2 {
+      font-size: 2rem;
+      color: #3F51B5;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #FF4081;
+      border-radius: 2px;
+    }
+    /* ---------- CARDS GRID ---------- */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(63,81,181,0.12);
+    }
+    .card i {
+      font-size: 2.8rem;
+      color: #FF4081;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      color: #3F51B5;
+      margin-bottom: 0.8rem;
+    }
+    .card p {
+      color: #666;
+    }
+    /* ---------- LISTS (ARTISTS/EVENTS) ---------- */
+    .list-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .list-item:last-child {
+      border-bottom: none;
+    }
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #00BCD4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-right: 1.2rem;
+    }
+    .item-info h4 {
+      font-size: 1.2rem;
+      color: #3F51B5;
+      margin-bottom: 0.2rem;
+    }
+    .item-info p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    .view-all {
+      margin-top: 1.5rem;
+      text-align: right;
+    }
+    .view-all a {
+      color: #00BCD4;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .view-all i {
+      margin-left: 6px;
+    }
+    /* ---------- FEATURED COLLECTION CARD ---------- */
+    .collection-card {
+      background: linear-gradient(145deg, #3F51B5, #5C6BC0);
+      color: white;
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+    }
+    .collection-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .collection-card .btn {
+      background: white;
+      color: #3F51B5;
+      margin-top: 1rem;
+    }
+    /* ---------- FAQ ACCORDION ---------- */
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      padding: 1.2rem 1.8rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: #3F51B5;
+      cursor: pointer;
+    }
+    .faq-question i {
+      color: #FF4081;
+      transition: transform 0.2s;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    /* ---------- NEWSLETTER (BREAKER) ---------- */
+    .newsletter {
+      background: #00BCD4;
+      color: white;
+      text-align: center;
+      padding: 3rem 0;
+    }
+    .newsletter form {
+      display: flex;
+      max-width: 500px;
+      margin: 2rem auto 0;
+    }
+    .newsletter input {
+      flex: 1;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 40px 0 0 40px;
+      font-size: 1rem;
+    }
+    .newsletter button {
+      border-radius: 0 40px 40px 0;
+      background: #FF4081;
+      border: none;
+      color: white;
+      padding: 0 1.8rem;
+      font-weight: 600;
+    }
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #212121;
+      color: #bbb;
+      padding: 3rem 0 1.5rem;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-column h3 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: #FF4081;
+    }
+    .footer-column ul {
+      list-style: none;
+    }
+    .footer-column li {
+      margin-bottom: 0.7rem;
+    }
+    .footer-column a {
+      color: #bbb;
+      text-decoration: none;
+    }
+    .footer-column a:hover {
+      color: white;
+    }
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+    }
+    .social-links a:hover {
+      background: #FF4081;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .user-actions {
+        margin-top: 0.5rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1>Art<span>Hive</span></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+      <div class="user-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Join Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: HERO (BREAKER) -->
+  <section class="breaker">
+    <div class="container">
+      <h2>Connect, Create, Collaborate</h2>
+      <p>Art Hive is an international art community centered at showcasing emerging talent and connecting artists with enthusiasts worldwide. Join our vibrant community of creators and art lovers.</p>
+      <a href="gallery.html" class="btn btn-primary">Explore the Gallery</a>
+    </div>
+  </section>
+
+  <!-- SECTION 2: QUICK NAVIGATION -->
+  <section class="container" style="margin: 4rem auto;">
+    <div class="section-header">
+      <h2>Quick Navigation</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card" onclick="window.location.href='gallery.html'">
+        <i class="fas fa-palette"></i>
+        <h3>Browse Art</h3>
+        <p>Explore thousands of artworks from artists around the world</p>
+      </div>
+      <div class="card" onclick="window.location.href='artists.html'">
+        <i class="fas fa-user-friends"></i>
+        <h3>Find Artists</h3>
+        <p>Connect with talented artists and discover their portfolios</p>
+      </div>
+      <div class="card" onclick="window.location.href='events.html'">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Upcoming Events</h3>
+        <p>Stay updated with exhibitions, workshops and art fairs</p>
+      </div>
+      <div class="card" onclick="window.location.href='forum.html'">
+        <i class="fas fa-comments"></i>
+        <h3>Join Forum</h3>
+        <p>Participate in discussions and share your artistic journey</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: TRENDING ARTISTS -->
+  <section class="container" style="margin-bottom: 3rem;">
+    <div class="section-header">
+      <h2>Trending Artists</h2>
+    </div>
+    <div class="artist-list">
+      <div class="list-item">
+        <div class="avatar">ST</div>
+        <div class="item-info">
+          <h4>Starling Thapa</h4>
+          <p>Learning & Drilling Techniques</p>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="avatar">STM</div>
+        <div class="item-info">
+          <h4>Sarita Tamang</h4>
+          <p>Contemporary Abstract Painter</p>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="avatar">SR</div>
+        <div class="item-info">
+          <h4>Samyak Ranjitkar</h4>
+          <p>Idealities in Fashion & Textile Art</p>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="avatar">UT</div>
+        <div class="item-info">
+          <h4>Utsab Tamang</h4>
+          <p>Mixed Media Sculpture</p>
+        </div>
+      </div>
+    </div>
+    <div class="view-all">
+      <a href="artists.html">View All Artists <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- SECTION 4: UPCOMING EVENTS -->
+  <section class="container" style="margin-bottom: 3rem;">
+    <div class="section-header">
+      <h2>Upcoming Events</h2>
+    </div>
+    <div class="event-list">
+      <div class="list-item">
+        <div class="avatar" style="background: #FF4081;">2027</div>
+        <div class="item-info">
+          <h4>Abstract Exhibition</h4>
+          <p>September 15-30, 2027 | New York Gallery</p>
+          <p style="color: #888;">Theoreosis insursslobe - Ricerca thrallia</p>
+        </div>
+      </div>
+    </div>
+    <div class="view-all">
+      <a href="events.html">View All Events <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- SECTION 5: FEATURED COLLECTIONS -->
+  <section class="container" style="margin-bottom: 2rem;">
+    <div class="section-header">
+      <h2>Featured Collections</h2>
+    </div>
+    <div class="collection-card">
+      <h3>Visit Gallery</h3>
+      <p>We have interesting collections in the gallery. Discover unique artworks from emerging talents.</p>
+      <a href="gallery.html" class="btn">View Collection</a>
+    </div>
+  </section>
+
+  <!-- SECTION 6: COMMUNITY DASHBOARD / FORUM -->
+  <section class="container" style="margin-bottom: 3rem;">
+    <div class="cards-grid">
+      <div class="card">
+        <i class="fas fa-comments"></i>
+        <h3>Community Forum</h3>
+        <p>Join discussions, share techniques, and connect with artists worldwide.</p>
+        <a href="forum.html" class="btn btn-primary" style="margin-top: 1rem;">Enter Forum</a>
+      </div>
+      <div class="card">
+        <i class="fas fa-envelope"></i>
+        <h3>Messages</h3>
+        <p>Connect with artists, collectors, and enthusiasts through our messaging system.</p>
+        <a href="#" class="btn btn-outline" style="margin-top: 1rem;">Check Messages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: FAQ -->
+  <section class="container" style="margin-bottom: 4rem;">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-item active">
+      <div class="faq-question">
+        How do I join Art Hive?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Click the "Join Now" button at the top right corner of the page. Registration is free and takes only a few minutes.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        Can I sell my artwork on Art Hive?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Yes! Art Hive provides a marketplace for artists to showcase and sell their work. We take a minimal commission on sales.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        How can I participate in events?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Browse our Events section and register for any upcoming exhibitions, workshops, or competitions that interest you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: NEWSLETTER (BREAKER) -->
+  <section class="newsletter">
+    <div class="container">
+      <h2 style="font-size: 2rem;">Stay Inspired</h2>
+      <p>Subscribe to our newsletter and receive weekly art inspiration, event invites, and exclusive interviews.</p>
+      <form>
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Art Hive</h3>
+          <p>An international art community centered at showcasing emerging talent and connecting artists worldwide.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="forum.html">Forum</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Technology park malasiya</li>
+            <li><i class="fas fa-phone"></i> 988888888</li>
+            <li><i class="fas fa-envelope"></i> info@arthive.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 Art Hive. All rights reserved. | Techspire College - Fundamental of Web Design and Development</p>
+        <p>Team: Sarita Tamang, Utsav Tamang, Samyak Ranjitkar, Starling Thapa</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
