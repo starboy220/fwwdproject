@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Artists | Art Hive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="javascripts/artists.js" defer></script>
+  <style>
+    /* ---------- GLOBAL (consistent with index) ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAFAFA;
+      color: #212121;
+      line-height: 1.6;
+    }
+    .container {
+     width: 90%;
+     max-width: 1200px;
+     margin: 0 auto; 
+   }
+    /* Header */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+    }
+    .logo h1 { 
+        font-size: 1.8rem;
+         font-weight: 800;
+          color: #3F51B5; 
+        }
+    .logo span {
+         color: #FF4081;
+         }
+    nav ul { 
+        display: flex; 
+        list-style: none; 
+        gap: 2rem;
+     }
+    nav a { 
+        text-decoration: none;
+         color: #212121;
+          font-weight: 600;
+           transition: color 0.2s;
+         }
+    nav a:hover, nav a.active { 
+        color: #FF4081;
+     }
+    nav a.active {
+         border-bottom: 3px solid #FF4081; 
+         padding-bottom: 5px;
+         }
+    .user-actions {
+         display: flex;
+          gap: 1rem; 
+        }
+    .btn {
+      display: inline-block;
+       padding: 0.7rem 1.8rem; 
+       border-radius: 30px;
+      font-weight: 600;
+       text-decoration: none;
+        transition: all 0.2s;
+         border: none; 
+         cursor: pointer;
+    }
+    .btn-primary {
+         background: #FF4081; 
+         color: white; 
+        }
+    .btn-primary:hover {
+         background: #e91e63;
+          transform: translateY(-2px); 
+          box-shadow: 0 6px 14px rgba(255,64,129,0.3);
+         }
+    .btn-outline { 
+        background: transparent;
+         border: 2px solid #3F51B5;
+          color: #3F51B5; 
+        }
+    .btn-outline:hover {
+         background: #3F51B5; 
+         color: white;
+         }
+
+    /* Section Breaker */
+    .breaker {
+      background: linear-gradient(135deg, #3F51B5 0%, #5C6BC0 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .breaker h2 {
+         font-size: 2.5rem;
+          font-weight: 700; 
+          margin-bottom: 1rem;
+         }
+    .breaker p { 
+        font-size: 1.2rem; 
+        max-width: 700px;
+         margin: 0 auto 2rem;
+          opacity: 0.9; }
+
+    /* Section Header */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-header h2 {
+      font-size: 2rem;
+      color: #3F51B5;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #FF4081;
+      border-radius: 2px;
+    }
+
+    /* Artists Grid */
+    .artists-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .artist-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .artist-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(63,81,181,0.12);
+    }
+    .artist-avatar {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      background: #00BCD4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .artist-card h3 { 
+        color: #3F51B5;
+         margin-bottom: 0.3rem;
+         }
+    .specialty { 
+        color: #FF4081; 
+        font-weight: 600;
+         margin-bottom: 0.8rem;
+         }
+    .description { 
+        color: #666; 
+        font-size: 0.95rem;
+         margin-bottom: 1.5rem; 
+        }
+    .artist-stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 1.2rem 0;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+    .stat .number { 
+        display: block;
+         font-weight: 700; 
+         color: #3F51B5; 
+        }
+    .stat .label { 
+        font-size: 0.8rem;
+         color: #888; }
+
+
+    /* Search & Filter */
+    .search-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      margin: 3rem 0;
+    }
+    .search-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid #ddd;
+      border-radius: 40px;
+      font-size: 1rem;
+    }
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+    .filter-tag {
+      padding: 0.5rem 1.2rem;
+      background: #f0f0f0;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-tag.active, .filter-tag:hover {
+      background: #00BCD4;
+      color: white;
+    }
+
+    /* Featured Artist */
+    .featured-artist {
+      background: linear-gradient(145deg, #3F51B5, #5C6BC0);
+      color: white;
+      border-radius: 30px;
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      margin: 3rem 0;
+    }
+    .featured-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #FF4081;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      border: 5px solid rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+    .featured-info h3 {
+         font-size: 2rem;
+          margin-bottom: 0.5rem; 
+        }
+    .featured-info .specialty {
+         color: white; 
+         opacity: 0.9;
+         }
+
+    /* Footer (same as index) */
+    footer {
+      background: #212121;
+      color: #bbb;
+      padding: 3rem 0 1.5rem;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-column h3 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: #FF4081;
+    }
+    .footer-column ul { 
+        list-style: none; 
+    }
+    .footer-column li { 
+        margin-bottom: 0.7rem;
+     }
+    .footer-column a {
+         color: #bbb; 
+        text-decoration: none; 
+    }
+    .footer-column a:hover { 
+        color: white; 
+    }
+    .social-links { 
+        display: flex;
+         gap: 0.8rem; 
+         margin-top: 1rem;
+         }
+    .social-links a {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 38px; 
+     height: 38px;
+     background: rgba(255,255,255,0.1);
+     border-radius: 50%; color: white;
+    }
+    .social-links a:hover {
+         background: #FF4081; 
+        }
+    .copyright {
+      text-align: center;
+       padding-top: 2rem;
+      border-top: 1px solid #444; 
+      font-size: 0.9rem;
+       color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .header-container { 
+        flex-direction: column; 
+        gap: 1rem;
+     }
+      nav ul { 
+        gap: 1rem; 
+        flex-wrap: wrap;
+         justify-content: center;
+         }
+      .search-bar { 
+        flex-direction: column;
+     }
+      .featured-artist {
+         flex-direction: column; 
+         text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-container">
+      <div class="logo"><h1>Art<span>Hive</span></h1></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="artists.html" class="active">Artists</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+      <div class="user-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Join Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="breaker">
+    <div class="container">
+      <h2>Meet Our Artists</h2>
+      <p>Explore the incredible talent behind Art Hive. Connect with creative minds, discover unique artworks, and be inspired by their journeys.</p>
+      <a href="signup.html" class="btn btn-primary">Become an Artist</a>
+    </div>
+  </section>
+
+  <!-- SEARCH & FILTER -->
+  <section class="container">
+    <div class="search-section">
+      <div class="search-bar">
+        <input type="text" placeholder="Search artists by name, specialty, or location...">
+        <button class="btn btn-primary">Search</button>
+      </div>
+      <div class="filter-options">
+        <span class="filter-tag active">All</span>
+        <span class="filter-tag">Painting</span>
+        <span class="filter-tag">Sculpture</span>
+        <span class="filter-tag">Digital Art</span>
+        <span class="filter-tag">Photography</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED ARTIST -->
+  <section class="container">
+    <div class="featured-artist">
+      <div class="featured-avatar">ST</div>
+      <div class="featured-info">
+        <h3>Starling Thapa</h3>
+        <p class="specialty">Khatra Painter</p>
+        <p style="opacity: 0.9; margin-bottom: 1.2rem;">
+          Starling specializes in Khatra painting with over 10 years of experience. His artworks have been showcased in more than 5 exhibitions and continue to inspire art lovers worldwide.
+        </p>
+        <a href="artistinfo.html" class="btn" style="background: white; color: #3F51B5;">View Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISTS GRID -->
+  <section class="container">
+    <div class="section-header"><h2>All Artists</h2></div>
+    <div class="artists-grid">
+      <!-- Artist 1 -->
+      <div class="artist-card">
+        <div class="artist-avatar">ST</div>
+        <h3>Starling Thapa</h3>
+        <p class="specialty">Khatra Painter</p>
+        <p class="description">Bringing traditional Khatra painting to contemporary audiences, Starling has created over 1000 pieces during his 10-year career.</p>
+        <div class="artist-stats">
+          <div class="stat"><span class="number">4</span><span class="label">Artworks</span></div>
+          <div class="stat"><span class="number">3</span><span class="label">Followers</span></div>
+          <div class="stat"><span class="number">5</span><span class="label">Exhibitions</span></div>
+        </div>
+        <a href="artist-profile.html" class="btn btn-outline">View Profile</a>
+      </div>
+      <!-- Artist 2 -->
+      <div class="artist-card">
+        <div class="artist-avatar">SR</div>
+        <h3>Samyak Ranjitkar</h3>
+        <p class="specialty">Fashion & Textile Artist</p>
+        <p class="description">Samyak creates vibrant fashion and textile art, blending traditional motifs with modern design techniques. Over 10 years, he’s built a strong following.</p>
+        <div class="artist-stats">
+          <div class="stat"><span class="number">3</span><span class="label">Collections</span></div>
+          <div class="stat"><span class="number">44</span><span class="label">Followers</span></div>
+          <div class="stat"><span class="number">1</span><span class="label">Shows</span></div>
+        </div>
+        <a href="artist-profile.html" class="btn btn-outline">View Profile</a>
+      </div>
+      <!-- Artist 3 -->
+      <div class="artist-card">
+        <div class="artist-avatar">STM</div>
+        <h3>Sarita Tamang</h3>
+        <p class="specialty">Mixed Media Sculptor</p>
+        <p class="description">Sarita transforms everyday materials into immersive sculptures and installations that invite viewers to explore new perspectives.</p>
+        <div class="artist-stats">
+          <div class="stat"><span class="number">11</span><span class="label">Sculptures</span></div>
+          <div class="stat"><span class="number">42</span><span class="label">Followers</span></div>
+          <div class="stat"><span class="number">6</span><span class="label">Installations</span></div>
+        </div>
+        <a href="artist-profile.html" class="btn btn-outline">View Profile</a>
+      </div>
+      <!-- Artist 4 -->
+      <div class="artist-card">
+        <div class="artist-avatar">UT</div>
+        <h3>Utsav Tamang</h3>
+        <p class="specialty">Traditional & Digital Fusion</p>
+        <p class="description">Utsav blends age-old art forms with modern digital techniques, creating innovative works that bridge the past and the future.</p>
+        <div class="artist-stats">
+          <div class="stat"><span class="number">6</span><span class="label">Artworks</span></div>
+          <div class="stat"><span class="number">2</span><span class="label">Followers</span></div>
+          <div class="stat"><span class="number">6</span><span class="label">Exhibitions</span></div>
+        </div>
+        <a href="artist-profile.html" class="btn btn-outline">View Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section style="background: #00BCD4; color: white; padding: 4rem 0; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem;">Are you an artist?</h2>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">
+        Join Art Hive today and share your creativity with a global audience. Connect with collectors, collaborate with peers, and grow your artistic journey.
+      </p>
+      <a href="signup.html" class="btn" style="background: white; color: #00BCD4;">Create Artist Account</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Art Hive</h3>
+          <p>An international art community centered at showcasing emerging talent and connecting artists worldwide.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="forum.html">Forum</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Technology park malasiya</li>
+            <li><i class="fas fa-phone"></i> 988888888</li>
+            <li><i class="fas fa-envelope"></i> info@arthive.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 Art Hive. All rights reserved. | Techspire College - Fundamental of Web Design and Development</p>
+        <p>Team: Sarita Tamang, Utsav Tamang, Samyak Ranjitkar, Starling Thapa</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

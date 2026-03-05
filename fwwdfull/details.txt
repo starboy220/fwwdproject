@@ -1,0 +1,51 @@
+Dear sir/ma,am here we have 15pages:
+first 10 is on the navigation screen i.e 
+home, gallery, artist, events, forum, about, contact, faq, terms and privacy
+next 2 pages are the sign in and join now 
+next page is directed from artist page where there is option for view profile below starling thapa profile.
+next one is upload art which is directed from art gallery :there is buttion named upload your art.
+structure of the page:
+ArtHive Website
+│
+├── index.html (Home Page / Main Entry)
+│   │
+│   ├── about.html
+│   │
+│   ├── gallery.html
+│   │     │
+│   │     ├── upload art.html        (Users can upload artwork from gallery page)
+│   │     │
+│   │     └── images/                (Gallery images used in gallery page)
+│   │           ├── img1.jpg
+│   │           ├── img2.jpg
+│   │           ├── img3.jpg
+│   │           ├── img4.png
+│   │           ├── img5.webp
+│   │           └── img6.webp
+│   │
+│   ├── artists.html
+│   │     │
+│   │     └── artistinfo.html        (Shows detailed information about selected artist)
+│   │
+│   ├── events.html
+│   │     │
+│   │     └── event-details.html     (Shows detailed information about selected event)
+│   │
+│   ├── forum.html                   (Community discussion page)
+│   │
+│   ├── login.html
+│   │     │
+│   │     └── signup.html            (New users can create account)
+│   │
+│   ├── contact.html
+│   │
+│   ├── faq.html
+│   │
+│   ├── privacy.html
+│   │
+│   └── terms.html
+│
+├── javascripts/
+│   └── home.js                      (Handles interactions, button actions, navigation)
+│
+└── details.txt                      (Extra project details or notes)
