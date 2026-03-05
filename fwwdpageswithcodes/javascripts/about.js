@@ -1,1 +1,0 @@
-//no js for about cause it is made simple 
